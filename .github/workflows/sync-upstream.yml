@@ -13,9 +13,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          # 👇 这一行就是正确写法！它会自动去你的 Secrets 里读取你刚才存的密码
+          token: ${{ secrets.PERSONAL_TOKEN }} 
 
       - name: Configure git
         run: |
